@@ -42,7 +42,13 @@ def find_t(G, N, R):
                 t = t - val / dfdt
                 val = f2(R, G, N, t)
             roots.append(t)
-    return min(roots)
+    if len(roots) > 1:
+        vals = []
+        for root in roots:
+            vals.append(f2(R, G, N, root))
+        return roots[np.where(vals == min(vals))]
+    else:
+        return roots[0]
 
 # The derivative of the error estimate as derived by Benner
 def f2(R, G, N, t):
