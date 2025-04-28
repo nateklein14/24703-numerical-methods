@@ -1,4 +1,4 @@
-orders = [256];
+orders = [1, 2, 4, 8, 16, 32, 64, 128];
 for i=1:1:length(orders)
     sys = rss(orders(i), 1, 1);
     while any(eig(sys.A) == 0)
